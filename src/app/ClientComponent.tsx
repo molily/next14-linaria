@@ -23,6 +23,14 @@ const StylableInput = ({ label, className, style }: StylableInputProps) => (
   </p>
 );
 
+const InputLinaria = linariaStyled(StylableInput)`
+  border: 2px inset pink;
+`;
+
+const InputStyledComponents = styledComponentStyled(StylableInput)`
+  border: 2px inset pink;
+`;
+
 const StylableInputFwdRef = forwardRef<HTMLInputElement, StylableInputProps>(({ label, className, style }, ref) =>
   <p>
     <label>
@@ -32,11 +40,11 @@ const StylableInputFwdRef = forwardRef<HTMLInputElement, StylableInputProps>(({ 
   </p>
 );
 
-const InputLinaria = linariaStyled(StylableInputFwdRef)`
-  border: 2px inset blue;
-`;
+// const InputLinariaFwdRef = linariaStyled(StylableInputFwdRef)`
+//   border: 2px inset blue;
+// `;
 
-const InputStyledComponents = styledComponentStyled(StylableInputFwdRef)`
+const InputStyledComponentsFwdRef = styledComponentStyled(StylableInputFwdRef)`
   border: 2px inset blue;
 `;
 
@@ -53,9 +61,13 @@ const Form = () => {
   return (
     <form>
       <StylableInput label="StylableInput" />
+      <InputLinaria label="InputLinaria" />
       <StylableInputFwdRef label="MyInput" />
-      <InputLinaria ref={ref} label="StyledInput" />
-      {/* <InputStyledComponents ref={ref} label="StyledInputStyledComponents" /> */}
+      
+      <InputStyledComponents label="InputStyledComponents" />
+      {/* <InputLinariaFwdRef ref={ref} label="StyledInput" /> */}
+      <InputStyledComponentsFwdRef label="StyledInputStyledComponents" />
+
       <button type="button" onClick={focusInput}>
         Focus field
       </button>
