@@ -1,4 +1,8 @@
+import withLinaria from 'next-with-linaria';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {};
 
-export default nextConfig;
+const configWithLinaria = withLinaria(nextConfig);
+
+export default configWithLinaria;
